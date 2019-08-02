@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="156" id="KGk-i7-Jjw" customClass="ImageTableViewCell" customModule="ContactsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="155.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LEg-I8-qSw">
+                        <rect key="frame" x="120" y="4" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="LEg-I8-qSw" secondAttribute="height" multiplier="1:1" id="ggh-5j-VmS"/>
+                            <constraint firstAttribute="height" constant="80" id="zkG-2p-eE0"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eM0-om-LxI">
+                        <rect key="frame" x="106" y="94" width="108" height="48"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="choose another image"/>
+                        <connections>
+                            <action selector="chooseImageButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PqO-Jn-Poy"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LEg-I8-qSw" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="D7j-FD-Omk"/>
+                    <constraint firstAttribute="bottom" secondItem="eM0-om-LxI" secondAttribute="bottom" constant="13.5" id="XLQ-Fb-Ah4"/>
+                    <constraint firstItem="eM0-om-LxI" firstAttribute="centerX" secondItem="LEg-I8-qSw" secondAttribute="centerX" id="der-6s-zPi"/>
+                    <constraint firstItem="eM0-om-LxI" firstAttribute="top" secondItem="LEg-I8-qSw" secondAttribute="bottom" constant="10" id="sme-AZ-nS0"/>
+                    <constraint firstItem="LEg-I8-qSw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="zsz-v3-Xgo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chooseImageButton" destination="eM0-om-LxI" id="8mE-If-zE8"/>
+                <outlet property="profileImageView" destination="LEg-I8-qSw" id="EDj-M1-7nW"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="143.97321428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
