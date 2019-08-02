@@ -36,13 +36,14 @@ class ContactDetailsViewController: BaseViewController {
     var image: UIImage?
     
     fileprivate var cells: [UITableViewCell] = []
+    fileprivate var didEditContact: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "TextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: "textViewCell")
+        self.tableView.register(UINib(nibName: "TextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: "textFieldCell")
         self.tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "imageCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification,
@@ -73,7 +74,7 @@ class ContactDetailsViewController: BaseViewController {
         cells = []
         
         let setupTextFieldCell = { () -> TextFieldTableViewCell in
-            let textFieldCell = self.tableView.dequeueReusableCell(withIdentifier: "textViewCell") as! TextFieldTableViewCell
+            let textFieldCell = self.tableView.dequeueReusableCell(withIdentifier: "textFieldCell") as! TextFieldTableViewCell
             switch self.controllerType {
             case .addNewContact:
                 textFieldCell.set(style: .editable)
@@ -143,6 +144,7 @@ class ContactDetailsViewController: BaseViewController {
                         return
                     }
                     self.contact = contact
+                    self.didEditContact = true
                     
                     DispatchQueue.main.async {
                         self.controllerType = .view
@@ -208,7 +210,9 @@ extension ContactDetailsViewController {
     }
     
     @objc func backPressed() {
-        self.delegate?.didEditContact(self)
+        if didEditContact {
+            self.delegate?.didEditContact(self)
+        }
         _ = self.navigationController?.popViewController(animated: true)
     }
 }
